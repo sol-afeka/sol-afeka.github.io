@@ -958,6 +958,23 @@ h3,.biz h3,.bp-main h2{font-weight:500}
 .v3-btn:hover{filter:brightness(1.12)}
 .v3-btn[aria-current="page"]{box-shadow:0 0 0 2px var(--surface),0 0 0 4px #B5532C}
 @media (max-width:360px){.hdr-tools{gap:4px}.icon-btn{width:34px;height:34px}}
+
+/* "now at Sol": compact update feed */
+.now-sol{padding-top:18px;padding-bottom:4px}
+.now-head{margin-bottom:10px}
+.now-head h2{font-size:1.2rem;font-weight:400}
+.now-head a{font-size:.86rem;font-weight:500}
+.now-lead2{display:flex;gap:10px;align-items:center;padding:10px 14px;margin-bottom:8px;border-radius:10px;background:color-mix(in srgb,var(--clay) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--clay) 28%,transparent);color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:500;line-height:1.45}
+.nl-ic{color:var(--clay);flex:none;font-size:.9rem}
+.now-rows{display:grid;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.now-row{display:flex;align-items:center;gap:10px;width:100%;padding:11px 14px;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);font:inherit;text-align:start;cursor:pointer}
+.now-row:first-child{border-top:0}
+.now-row:hover{background:var(--surface-2)}
+.nr-t{flex:none;font-size:.72rem;font-weight:600;padding:.15em .6em;border-radius:999px;background:color-mix(in srgb,var(--tc) 15%,transparent);color:var(--tc);--tc:var(--teal)}
+.nr-t.ev{--tc:var(--clay)}.nr-t.dl{--tc:var(--ochre)}
+.nr-b{flex:1;min-width:0;font-size:.95rem;font-weight:500;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nr-go{flex:none;color:var(--muted);font-size:1.2rem;line-height:1}
+@media (min-width:900px){.now-rows{grid-template-columns:repeat(3,minmax(0,1fr))}.now-row{border-top:0;border-inline-start:1px solid var(--line)}.now-row:first-child{border-inline-start:0}}
 </style>
 <script type="application/ld+json" id="ld">{"@context":"https://schema.org","@type":"ShoppingCenter","name":"סול אפקה","alternateName":"Sol Afeka","description":"סול אפקה – המרכז המסחרי של שכונת אפקה בקריית ביאליק. כ-10,000 מ״ר: סופר-פארם, מכבי, כללית, מסעדות, מאפיות, חדר כושר ומשרדים. מדריך קומות, שעות ומבצעים.","address":{"@type":"PostalAddress","streetAddress":"יגאל בשן 2","addressLocality":"קריית ביאליק","addressCountry":"IL"}}</script>
 <a class="skip" href="#main">דלג לתוכן</a>
@@ -1371,8 +1388,9 @@ function pageHome(){
    '<div class="h2-copy"><span class="h2-eb">נאות אפק · קריית ביאליק</span><h1>'+esc(s.slogan||s.name)+'</h1><p>'+esc(s.heroSub||"חנויות, מסעדות, בתי קפה, מרפאות ושירותים, הכל במקום אחד בלב נאות אפק.")+'</p><a class="h2-step" href="#stores">לגלות את המתחם</a></div></div>'+
    '</section>';
   var strip='<div class="wrap h2-strip" id="h2strip">'+heroSearch()+'<div class="h2-facts"><span>'+ico("pin")+esc(s.address)+'</span><span>'+ico("clock")+'היום '+esc(st.today)+' '+statusPill()+'</span><span class="h2-links"><a href="'+wazeUrl()+'" target="_blank" rel="noopener">'+ico("nav")+' ניווט ב-Waze</a>'+(s.phone?'<a href="'+telHref(s.phone)+'">'+ico("phone")+' התקשרו</a>':'')+'</span></div></div>';
-  var nowItems=(bn&&bn.active&&bn.text?['<a class="now-item now-lead" href="'+esc(safeUrl(bn.link)||"#deals")+'"><b>'+esc(bn.text)+'</b></a>']:[]).concat(news.slice(0,3).map(function(p){return '<a class="now-item" href="#deals"><small>'+esc(TYPES[p.type])+'</small><b>'+esc(p.title)+'</b><span class="now-go" aria-hidden="true">←</span></a>';}));
-  var nowSol=nowItems.length?'<section class="wrap now-sol" aria-label="עכשיו בסול"><div class="now-head"><span class="now-pulse" aria-hidden="true"></span><h2>עכשיו בסול</h2><a href="#deals">לכל העדכונים ←</a></div><div class="now-list">'+nowItems.join("")+'</div></section>':'';
+  var nowLead=(bn&&bn.active&&bn.text)?'<a class="now-lead2" href="'+esc(safeUrl(bn.link)||"#deals")+'"><span class="nl-ic" aria-hidden="true">✦</span><span>'+esc(bn.text)+'</span></a>':'';
+  var nowRows=news.slice(0,3).map(function(p){ var tc=p.type==="event"?"ev":p.type==="deal"||p.type==="raffle"?"dl":"nw"; return '<button type="button" class="now-row" data-act="promo" data-id="'+esc(p.id)+'"><span class="nr-t '+tc+'">'+esc(TYPES[p.type]||"")+'</span><span class="nr-b">'+esc(p.title)+'</span><span class="nr-go" aria-hidden="true">‹</span></button>'; });
+  var nowSol=(nowLead||nowRows.length)?'<section class="wrap now-sol" aria-label="עכשיו בסול"><div class="now-head"><span class="now-pulse" aria-hidden="true"></span><h2>עכשיו בסול</h2><a href="#deals">לכל העדכונים ←</a></div>'+nowLead+(nowRows.length?'<div class="now-rows">'+nowRows.join("")+'</div>':'')+'</section>':'';
   var sheet='<div class="sheet" id="sheet"><main id="main">'+strip+nowSol+
    '<section class="tone tone-olive" style="margin-top:28px"><div class="sec wrap" style="padding-bottom:28px"><div class="sec-head" style="margin-bottom:0"><div><div class="eyebrow">קטגוריות</div><h2>מה מחפשים היום?</h2></div><span class="btns"><button class="btn" data-act="gofloors">מדריך קומות</button><a class="btn" href="#stores">לכל העסקים ←</a></span></div></div><div class="cat-rail" role="list">'+
      Object.keys(CATS).map(function(k){return '<button class="cat-tile" role="listitem" style="--cc:var(--c-'+k+')" data-act="gocat" data-cat="'+k+'"><span class="cat-arch">'+ico(CATS[k].i)+'</span><b>'+CATS[k].l+'</b><small>'+(counts[k]===1?"עסק אחד":counts[k]?counts[k]+" עסקים":"בקרוב")+'</small></button>';}).join("")+'</div></section>'+
