@@ -975,6 +975,62 @@ h3,.biz h3,.bp-main h2{font-weight:500}
 .nr-b{flex:1;min-width:0;font-size:.95rem;font-weight:500;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .nr-go{flex:none;color:var(--muted);font-size:1.2rem;line-height:1}
 @media (min-width:900px){.now-rows{grid-template-columns:repeat(3,minmax(0,1fr))}.now-row{border-top:0;border-inline-start:1px solid var(--line)}.now-row:first-child{border-inline-start:0}}
+
+/* category tiles: a little smaller */
+.cat-tile{padding:16px 10px 14px;gap:2px;min-width:118px}
+.cat-arch{margin-bottom:8px}
+.cat-arch svg,.cat-tile .cat-arch svg{width:32px;height:32px}
+.cat-tile b{font-size:.92rem;line-height:1.25}
+.cat-tile small{font-size:.7rem}
+@media (max-width:620px){.cat-tile{min-width:104px;padding:13px 8px 12px}.cat-arch svg,.cat-tile .cat-arch svg{width:28px;height:28px}.cat-tile b{font-size:.86rem}}
+
+/* "what's new": compact rows, the whole card opens it, "all deals" button at the bottom */
+.news-band .sec{padding-block:36px 32px}
+.news-band .sec-head{margin-bottom:14px}
+.news-band .promos{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.news-band .promo{flex-direction:row;align-items:center;gap:12px;padding:10px 12px;border-width:1.5px;box-shadow:3px 3px 0 color-mix(in srgb,var(--cc) 50%,transparent);cursor:pointer}
+@media (hover:hover){.news-band .promo:hover{transform:translate(-1px,-2px);box-shadow:5px 5px 0 color-mix(in srgb,var(--cc) 55%,transparent)}}
+.news-band .promo-img{flex:none;width:64px;height:64px;aspect-ratio:auto;border:0;border-radius:6px}
+.news-band .promo-img.logo img{padding:6px}
+.news-band .promo-body{padding:0;gap:4px;min-width:0}
+.news-band .promo-body > div:first-child{gap:4px!important}
+.news-band .promo .tag{font-size:.68rem;padding:.1em .5em}
+.news-band .promo h3{font-size:1rem;font-weight:500;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-band .promo-body > p,.news-band .promo .price,.news-band .ev-date,.news-band .ev-info > span + span{display:none}
+.news-band .promo .when,.news-band .ev-meta,.news-band .ev-info{font-size:.8rem;gap:4px;margin:0}
+.news-band .ev-meta{display:block}
+.news-band .pc-btns{height:0;overflow:hidden;margin:0;padding:0}
+.news-band .nb-nav{margin-top:14px}
+.nb-all{display:flex;justify-content:center;margin-top:18px}
+.news-band .nb-all .btn{background:transparent;color:var(--on-deep);border-color:color-mix(in srgb,var(--on-deep) 45%,transparent)}
+.news-band .nb-all .btn:hover{background:var(--on-deep);color:var(--olive-deep)}
+@media (max-width:620px){.news-band .promos{grid-template-columns:minmax(0,1fr)}.nb-all .btn{width:100%;justify-content:center}.news-band .promo-img{width:56px;height:56px}}
+
+/* hero: copy sits at the bottom so the SOL AFEKA sign on the building stays clear */
+.h2-veil{background:linear-gradient(to top,rgba(16,18,20,.9) 0%,rgba(16,18,20,.55) 30%,rgba(16,18,20,.08) 58%,rgba(16,18,20,0) 75%)}
+.h2-copy{place-content:end center;padding:24px 20px clamp(26px,5vh,48px);gap:8px}
+.h2-copy p{font-size:clamp(.88rem,1.3vw,1.05rem);letter-spacing:.08em;max-width:none}
+.h2-step{margin-top:6px}
+.h2-img{object-position:50% 35%}
+@media (min-width:900px){
+  .h2-img{object-position:50% 72%}
+  .h2-copy{place-content:end start;justify-items:start;text-align:right;padding:24px clamp(32px,6vw,90px) clamp(34px,6vh,60px)}
+  .h2-veil{background:linear-gradient(to left,rgba(16,18,20,.78) 0%,rgba(16,18,20,.45) 30%,rgba(16,18,20,0) 55%),linear-gradient(to top,rgba(16,18,20,.6),rgba(16,18,20,0) 45%)}
+}
+
+/* hero copy in Heebo Medium */
+.h2-copy h1,.h2-copy p,.h2-eb,.h2-step{font-weight:500}
+.h2-copy h1{letter-spacing:.01em}
+
+/* category rail runs like the logo strip */
+.cat-rail.cat-run{display:block;overflow:hidden;scroll-snap-type:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.cat-track{display:flex;width:max-content;animation:catrun 45s linear infinite}
+.cat-dup{display:flex}
+.cat-run .cat-tile{flex:none;width:150px;min-width:0;border-inline-start:1px solid var(--line)}
+.cat-run:hover .cat-track,.cat-run:focus-within .cat-track,.cat-run.hold .cat-track{animation-play-state:paused}
+@keyframes catrun{to{transform:translateX(50%)}}
+@media (max-width:620px){.cat-run .cat-tile{width:118px}.cat-track{animation-duration:38s}}
+@media (prefers-reduced-motion:reduce){.cat-track{animation:none}.cat-rail.cat-run{overflow-x:auto}.cat-dup{display:none}}
 </style>
 <script type="application/ld+json" id="ld">{"@context":"https://schema.org","@type":"ShoppingCenter","name":"סול אפקה","alternateName":"Sol Afeka","description":"סול אפקה – המרכז המסחרי של שכונת אפקה בקריית ביאליק. כ-10,000 מ״ר: סופר-פארם, מכבי, כללית, מסעדות, מאפיות, חדר כושר ומשרדים. מדריך קומות, שעות ומבצעים.","address":{"@type":"PostalAddress","streetAddress":"יגאל בשן 2","addressLocality":"קריית ביאליק","addressCountry":"IL"}}</script>
 <a class="skip" href="#main">דלג לתוכן</a>
@@ -1207,6 +1263,11 @@ function hoursTable(){
   var n=nowIL();
   return '<table class="hours"><tbody>'+D.hours.map(function(h,i){return '<tr class="'+(i===n.day?"today":"")+'"><td>יום '+esc(h.day)+'</td><td>'+esc(hoursLine(h))+'</td></tr>';}).join("")+'</tbody></table>';
 }
+function heroStatus(){ var n=nowIL(), h=centerDay(n.day,today()), st=stateFor(h), txt;
+  if(st.open) txt="פתוח עכשיו · עד "+h.close;
+  else if(!h.closed && h.open && n.min<toMin(h.open)) txt="ייפתח היום ב-"+h.open;
+  else { txt="סגור כעת"; for(var k=1;k<=7;k++){ var dd=new Date(today()+"T12:00:00"); dd.setDate(dd.getDate()+k); var ds=dd.getFullYear()+"-"+String(dd.getMonth()+1).padStart(2,"0")+"-"+String(dd.getDate()).padStart(2,"0"); var nh=centerDay((n.day+k)%7,ds); if(nh && !nh.closed && nh.open){ txt=(h.closed?"סגור היום":"סגור כעת")+" · נפתח "+(k===1?"מחר":"ביום "+DAYS[(n.day+k)%7])+" ב-"+nh.open; break; } } }
+  return '<span class="status'+(st.open?"":" closed")+'">'+esc(txt)+'</span>'; }
 function statusPill(){var s=openState(); return '<span class="status'+(s.open?"":" closed")+'">'+esc(s.text)+'</span>';}
 function callBtn(cls){var p=D.settings.phone; return p? '<a class="btn'+(cls||"")+'" href="'+telHref(p)+'">'+ico("phone")+' התקשרו <span dir="ltr">'+esc(p)+'</span></a>' : '<a class="btn'+(cls||"")+'" href="#contact">'+ico("phone")+' צרו קשר</a>';}
 
@@ -1339,7 +1400,8 @@ var nbTimer=0, nbPause=false;
 function nbShow(i){ var pool=document.getElementById("nbpool"); if(!pool) return; var n=+pool.dataset.pages; i=((i%n)+n)%n; pool.dataset.cur=i;
   pool.querySelectorAll("[data-pg]").forEach(function(a){ a.hidden= +a.dataset.pg!==i; if(!a.hidden){ a.classList.remove("nb-in"); void a.offsetWidth; a.classList.add("nb-in"); } });
   pool.querySelectorAll(".nb-dot").forEach(function(d,k){ d.classList.toggle("on",k===i); }); }
-function nbStart(){ clearInterval(nbTimer); var pool=document.getElementById("nbpool"); if(!pool||+pool.dataset.pages<2) return;
+function catHold(){ var r=document.querySelector(".cat-run"); if(!r||r.dataset.h) return; r.dataset.h=1; r.addEventListener("touchstart",function(){r.classList.add("hold");},{passive:true}); r.addEventListener("touchend",function(){setTimeout(function(){r.classList.remove("hold");},1200);},{passive:true}); }
+function nbStart(){ catHold(); clearInterval(nbTimer); var pool=document.getElementById("nbpool"); if(!pool||+pool.dataset.pages<2) return;
   pool.addEventListener("mouseenter",function(){nbPause=true;}); pool.addEventListener("mouseleave",function(){nbPause=false;}); pool.addEventListener("focusin",function(){nbPause=true;}); pool.addEventListener("focusout",function(){nbPause=false;});
   if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   nbTimer=setInterval(function(){ if(nbPause||document.hidden) return; var pl=document.getElementById("nbpool"); if(!pl){ clearInterval(nbTimer); return; } nbShow((+pl.dataset.cur||0)+1); },7000); }
@@ -1385,17 +1447,18 @@ function pageHome(){
   var bn=s.banner;
   function nowItemsHero(){ return (bn&&bn.active&&bn.text?'<a href="'+esc(safeUrl(bn.link)||"#deals")+'"><b>'+esc(bn.text)+'</b></a>':'')+news.slice(0,bn&&bn.active&&bn.text?2:3).map(function(p){return '<a href="#deals"><small>'+esc(TYPES[p.type])+'</small><b>'+esc(p.title)+'</b></a>';}).join(""); }
   var hero='<section class="hero2" id="hero2" aria-label="'+esc(s.name)+'"><div class="h2-frame"><img class="h2-img" src="'+img("img:hero")+'" alt="הדמיה של חזית מתחם סול אפקה בשעת ערב" fetchpriority="high"><div class="h2-veil" aria-hidden="true"></div>'+
-   '<div class="h2-copy"><span class="h2-eb">נאות אפק · קריית ביאליק</span><h1>'+esc(s.slogan||s.name)+'</h1><p>'+esc(s.heroSub||"חנויות, מסעדות, בתי קפה, מרפאות ושירותים, הכל במקום אחד בלב נאות אפק.")+'</p><a class="h2-step" href="#stores">לגלות את המתחם</a></div></div>'+
+   '<div class="h2-copy"><span class="h2-eb">נאות אפק · קריית ביאליק</span><h1>'+esc(s.slogan||s.name)+'</h1><p>'+esc(s.heroSub||"מסעדות · משרדים · כושר · פנאי")+'</p><a class="h2-step" href="#stores">לגלות את המתחם ←</a></div></div>'+
    '</section>';
-  var strip='<div class="wrap h2-strip" id="h2strip">'+heroSearch()+'<div class="h2-facts"><span>'+ico("pin")+esc(s.address)+'</span><span>'+ico("clock")+'היום '+esc(st.today)+' '+statusPill()+'</span><span class="h2-links"><a href="'+wazeUrl()+'" target="_blank" rel="noopener">'+ico("nav")+' ניווט ב-Waze</a>'+(s.phone?'<a href="'+telHref(s.phone)+'">'+ico("phone")+' התקשרו</a>':'')+'</span></div></div>';
+  var strip='<div class="wrap h2-strip" id="h2strip">'+heroSearch()+'<div class="h2-facts"><span>'+ico("pin")+esc(s.address)+'</span><span>'+heroStatus()+'</span><span class="h2-links"><a href="'+wazeUrl()+'" target="_blank" rel="noopener">'+ico("nav")+' ניווט ב-Waze</a>'+(s.phone?'<a href="'+telHref(s.phone)+'">'+ico("phone")+' התקשרו</a>':'')+'</span></div></div>';
   var nowLead=(bn&&bn.active&&bn.text)?'<a class="now-lead2" href="'+esc(safeUrl(bn.link)||"#deals")+'"><span class="nl-ic" aria-hidden="true">✦</span><span>'+esc(bn.text)+'</span></a>':'';
   var nowRows=news.slice(0,3).map(function(p){ var tc=p.type==="event"?"ev":p.type==="deal"||p.type==="raffle"?"dl":"nw"; return '<button type="button" class="now-row" data-act="promo" data-id="'+esc(p.id)+'"><span class="nr-t '+tc+'">'+esc(TYPES[p.type]||"")+'</span><span class="nr-b">'+esc(p.title)+'</span><span class="nr-go" aria-hidden="true">‹</span></button>'; });
   var nowSol=(nowLead||nowRows.length)?'<section class="wrap now-sol" aria-label="עכשיו בסול"><div class="now-head"><span class="now-pulse" aria-hidden="true"></span><h2>עכשיו בסול</h2><a href="#deals">לכל העדכונים ←</a></div>'+nowLead+(nowRows.length?'<div class="now-rows">'+nowRows.join("")+'</div>':'')+'</section>':'';
   var sheet='<div class="sheet" id="sheet"><main id="main">'+strip+nowSol+
-   '<section class="tone tone-olive" style="margin-top:28px"><div class="sec wrap" style="padding-bottom:28px"><div class="sec-head" style="margin-bottom:0"><div><div class="eyebrow">קטגוריות</div><h2>מה מחפשים היום?</h2></div><span class="btns"><button class="btn" data-act="gofloors">מדריך קומות</button><a class="btn" href="#stores">לכל העסקים ←</a></span></div></div><div class="cat-rail" role="list">'+
-     Object.keys(CATS).map(function(k){return '<button class="cat-tile" role="listitem" style="--cc:var(--c-'+k+')" data-act="gocat" data-cat="'+k+'"><span class="cat-arch">'+ico(CATS[k].i)+'</span><b>'+CATS[k].l+'</b><small>'+(counts[k]===1?"עסק אחד":counts[k]?counts[k]+" עסקים":"בקרוב")+'</small></button>';}).join("")+'</div></section>'+
+   '<section class="tone tone-olive" style="margin-top:28px"><div class="sec wrap" style="padding-bottom:28px"><div class="sec-head" style="margin-bottom:0"><div><div class="eyebrow">קטגוריות</div><h2>מה מחפשים היום?</h2></div><span class="btns"><button class="btn" data-act="gofloors">מדריך קומות</button><a class="btn" href="#stores">לכל העסקים ←</a></span></div></div><div class="cat-rail cat-run"><div class="cat-track" role="list">'+
+     (function(){ var row=Object.keys(CATS).map(function(k){return '<button class="cat-tile" role="listitem" style="--cc:var(--c-'+k+')" data-act="gocat" data-cat="'+k+'"><span class="cat-arch">'+ico(CATS[k].i)+'</span><b>'+CATS[k].l+'</b><small>'+(counts[k]===1?"עסק אחד":counts[k]?counts[k]+" עסקים":"בקרוב")+'</small></button>';}).join("");
+       return row+'<span class="cat-dup" aria-hidden="true">'+row.replace(/role="listitem"/g,'tabindex="-1"')+'</span>'; })()+'</div></div></section>'+
+   '<section class="news-band"><div class="sec wrap"><div class="sec-head"><div><div class="eyebrow"><span class="nb-pulse" aria-hidden="true"></span>מבצעים ועדכונים</div><h2>מה חדש בסול</h2></div></div>'+nbPool()+'<div class="nb-all"><a class="btn" href="#deals">לכל המבצעים והאירועים ←</a></div></div></section>'+
    marquee()+
-   '<section class="news-band"><div class="sec wrap"><div class="sec-head"><div><div class="eyebrow"><span class="nb-pulse" aria-hidden="true"></span>מבצעים ועדכונים</div><h2>מה חדש בסול</h2></div><a class="btn" href="#deals">לכל המבצעים והאירועים ←</a></div>'+nbPool()+'</div></section>'+
    (galleryItems().length?'<section class="sec wrap"><div class="sec-head"><div><div class="eyebrow">גלריה</div><h2>המתחם בתמונות</h2></div><a class="btn" href="#visit">אודות המרכז ←</a></div>'+galleryBlock(5)+'</section>':'')+
    '<section class="sec wrap" style="padding-top:0"><a class="teaser3d" href="#map3d"><span class="t3-cube" aria-hidden="true">'+ico("cube")+'</span><span><span class="eyebrow">הדמיה אינטראקטיבית</span><b>הדמיית המתחם</b><small>סובבו את המבנה, פתחו קומה וגלו איפה כל חנות נמצאת.</small></span><span class="btn primary">לסיור ←</span></a></section>'+
    '<section class="sec wrap" style="padding-top:0"><div class="intro"><div><div class="eyebrow">אודות</div><h2 style="margin:8px 0 14px">'+esc(s.slogan)+'</h2><p class="lead">'+esc(s.intro)+'</p>'+
@@ -2383,6 +2446,7 @@ function tick(){
 
 /* ---------- events ---------- */
 app.addEventListener("click",function(e){
+  var nbc=e.target.closest(".news-band .promo"); if(nbc && !e.target.closest("a,button")){ var nbf=nbc.querySelector(".pc-btns > *"); if(nbf){ nbf.click(); return; } }
   var el=e.target.closest("[data-act],[data-a11y],[data-scroll]"); if(!el) return;
   if(el.dataset.scroll && !el.dataset.act){ var target=el.dataset.scroll; setTimeout(function(){var t=document.getElementById(target); if(t) t.scrollIntoView({behavior:"smooth"});},60); return; }
   if(el.dataset.a11y){ var cls="a11y-"+el.dataset.a11y; document.documentElement.classList.toggle(cls); lsSet("sol-"+cls, document.documentElement.classList.contains(cls)?"1":""); rerender(); return; }
